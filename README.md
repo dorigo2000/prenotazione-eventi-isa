@@ -1,19 +1,19 @@
 # Eventhub
-`Eventhub` è un'applicazione web che permette ad utenti ed organizzatori di gestire la creazione di eventi e la prenotazione ad essi
+`Eventhub` è un'applicazione web che permette ad utenti ed organizzatori di gestire la creazione di eventi e la prenotazione ad essi.
 
 ## Funzionalità
 `Eventhub` implementa le seguenti features:
 - Registrazione di utenti ed organizzatori
 - Permettere ad organizzatori di creare eventi caratterizzati da:
- - Nome
- - Data e orario di inizio
- - Data e orario di fine
- - Città
- - Indirizzo
- - Massimo numero di partecipanti
+  - Nome
+  - Data e orario di inizio
+  - Data e orario di fine
+  - Città
+  - Indirizzo
+  - Massimo numero di partecipanti
 - Permettere agli utenti di:
- - Ricercare eventi filtrando per città
- - Registrarsi e deregistrarsi ad eventi
+  - Ricercare eventi filtrando per città
+  - Registrarsi e deregistrarsi ad eventi
 - Impedire ad utenti di registrarsi ad un evento se concomitante ad un altro ai quali sono già iscritti
 - Permette agli organizzatori di consultare la lista dei partecipanti ai propri eventi ed eventualmente rimuovere utenti iscritti indesiderati dai proprio eventi
 
