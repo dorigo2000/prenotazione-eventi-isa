@@ -8,6 +8,7 @@ class User < ApplicationRecord
     validates :nome, presence: {message: "è obbligatorio"}
     validates :cognome, presence: {message: "è obbligatorio"}
     validates :telefono, presence: {message: "è obbligatorio"}, format: { with: /\A\d{10}\z/, message: "deve contenere esattamente 10 cifre" }
+    validates :data_nascita, presence: {message: "è obbligatoria"}
     validate :data_nascita_check
     validates :tipo, presence: {message: "è obbligatorio"}
     validates :email, presence: {message: "è obbligatoria"}, uniqueness: { case_sensitive: false, message: "è già stata registrata" }, format: {with: /\A[^@\s]+@[^@\s]+\z/, message: "non ha un formato valido"}

@@ -9,7 +9,9 @@
                         <% form.object.errors.full_messages.each do |message| %>
                             <% unless message.include?("Password can't be blank") %>
                             <% unless message.include?("Password confirmation doesn't match Password") %>
+                            <% unless message.include?("Data nascita è obbligatoria") %>
                                 <div><%= message %></div>
+                            <% end %>
                             <% end %>
                             <% end %>
                         <% end %>
