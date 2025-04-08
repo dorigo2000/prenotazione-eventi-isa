@@ -15,6 +15,12 @@ class Event < ApplicationRecord
 
   private
 
+  def paese_check
+    if paese.blank?
+      errors.add(:base, "Città è obbligatoria")
+    end
+  end
+
   def data_inizio_check
     if data_inizio.present?
         if data_inizio <= Date.today
@@ -25,22 +31,22 @@ class Event < ApplicationRecord
     end
   end
 
-  def orario_inizio_check
-    if orario_inizio.blank?
-      errors.add(:base, "Ora di inizio è obbligatoria")
-    end
-  end
-
   def data_fine_check
     if data_fine.present?
         if data_fine < Date.today
           errors.add(:base, "Data di fine non può essere nel passato")
         end
-        if data_fine < data_inizio
+        if data_inizio.present? && data_fine < data_inizio
           errors.add(:base, "Data di fine non può essere prima della data di inizio")
         end
     else
         errors.add(:base, "Data di fine è obbligatoria")
+    end
+  end
+
+  def orario_inizio_check
+    if orario_inizio.blank?
+      errors.add(:base, "Ora di inizio è obbligatoria")
     end
   end
 
@@ -50,19 +56,13 @@ class Event < ApplicationRecord
     end
   end
 
-  def paese_check
-    if paese.blank?
-      errors.add(:base, "Città è obbligatoria")
-    end
-  end
-
   def max_partecipanti_check
     if max_partecipanti.present?
         if max_partecipanti < 1
           errors.add(:base, "Numero massimo di partecipanti deve essere maggiore di 0")
         end
     else
-        errors.add(:base, "Numero massimo di partecipanti è obbigatorio")
+        errors.add(:base, "Numero massimo di partecipanti è obbligatorio")
     end
   end
 end

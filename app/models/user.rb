@@ -15,6 +15,10 @@ class User < ApplicationRecord
     validates :password, presence: {message: "è obbligatoria"}, length: {minimum: 8, message: "deve essere di almeno 8 caratteri"}
     validate :passwords_match
 
+    def numero_iscrizioni
+        subscribed_events.count
+    end
+
     private
 
     def data_nascita_check

@@ -6,6 +6,7 @@ class Subscription < ApplicationRecord
   
   validates :user_id, uniqueness: { scope: :event_id, message: "Sei già iscritto a questo evento!" }
   validate :no_conflicting_events
+  validate :max_partecipanti_reached
 
   private
 
@@ -24,6 +25,12 @@ class Subscription < ApplicationRecord
         event: event,
         messaggio: "L'evento '#{event.nome}' ha raggiunto il numero massimo di partecipanti."
       )
+    end
+  end
+
+  def max_partecipanti_reached
+    if event.attendees.count >= event.max_partecipanti
+      errors.add(:base, "Numero massimo di partecipanti raggiunto")
     end
   end
 end

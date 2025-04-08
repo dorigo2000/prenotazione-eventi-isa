@@ -146,5 +146,20 @@ RSpec.describe User, type: :model do
       expect(user.errors[:base]).to include("Le password non coincidono")
     end
   end
+
+  describe "test iscrizione a più eventi:" do
+    let(:user) { create(:user) }
+    let(:event1) { create(:event, data_inizio: Date.today + 10) }
+    let(:event2) { create(:event, data_inizio: Date.today + 20) }
+
+    before do
+      create(:subscription, user: user, event: event1)
+      create(:subscription, user: user, event: event2)
+    end
+
+    it "restituisce il numero corretto di eventi a cui l'utente è iscritto" do
+      expect(user.numero_iscrizioni).to eq(2)
+    end
+  end
 end
 
