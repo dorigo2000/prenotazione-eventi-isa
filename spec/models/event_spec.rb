@@ -157,7 +157,7 @@ RSpec.describe Event, type: :model do
   
     it "modifica correttamente la data di inizio" do
       new_date = Date.today + 7
-      event.update(data_inizio: new_date)
+      event.update!(data_inizio: new_date)
       expect(event.reload.data_inizio).to eq(new_date)
     end
   end
