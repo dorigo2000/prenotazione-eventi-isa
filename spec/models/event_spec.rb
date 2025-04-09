@@ -91,6 +91,20 @@ RSpec.describe Event, type: :model do
   describe "richiede l'ora di fine:" do
     let(:event) { build(:event) }
 
+    it "è invalido se l'ora di fine è prima dell'ora di inizio nello stesso giorno" do
+      event.data_inizio = Date.today + 1.day
+      event.data_fine = Date.today + 1.day
+      event.orario_inizio = "12:00"
+      event.orario_fine = "10:00"
+      
+      expect(event).not_to be_valid
+      expect(event.errors[:base]).to include("Ora di fine non può essere prima dell'ora di inizio")
+    end
+  end
+
+  describe "richiede orari validi:" do
+    let(:event) { build(:event) }
+
     it "è invalido senza ora di fine" do
       event.orario_fine = nil
       expect(event).not_to be_valid
@@ -156,8 +170,8 @@ RSpec.describe Event, type: :model do
     let(:event) { create(:event) }
   
     it "modifica correttamente la data di inizio" do
-      new_date = Date.today + 7
-      event.update!(data_inizio: new_date)
+      new_date = Date.today + 15
+      event.update!(data_inizio: new_date, data_fine: new_date + 5)
       expect(event.reload.data_inizio).to eq(new_date)
     end
   end

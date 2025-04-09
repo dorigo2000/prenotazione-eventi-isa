@@ -5,7 +5,7 @@ class Event < ApplicationRecord
   has_many :notifications, dependent: :nullify
 
   validates :nome, presence: {message: "evento è obbligatorio"}
-  validate :data_inizio_check, :orario_inizio_check, :data_fine_check, :orario_fine_check, :paese_check
+  validate :data_inizio_check, :orario_inizio_check, :data_fine_check, :orario_fine_check, :orario_check, :paese_check
   validates :indirizzo, presence: {message: "è obbligatorio"}
   validate :max_partecipanti_check
 
@@ -53,6 +53,12 @@ class Event < ApplicationRecord
   def orario_fine_check
     if orario_fine.blank?
       errors.add(:base, "Ora di fine è obbligatoria")
+    end
+  end
+
+  def orario_check
+    if data_inizio == data_fine && orario_inizio > orario_fine
+      errors.add(:base, "Ora di fine non può essere prima dell'ora di inizio")
     end
   end
 
