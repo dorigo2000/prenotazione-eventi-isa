@@ -132,6 +132,14 @@ RSpec.describe Event, type: :model do
     end
   end
 
+  describe "validazione attributi:" do
+    let(:event) { build(:event) }
+
+    it "è valido con tutti gli attributi richiesti" do
+      expect(event).to be_valid
+    end
+  end
+
   describe "test partecipanti ad un evento:" do
     let(:event) { create(:event) }
     let(:user1) { create(:user) }

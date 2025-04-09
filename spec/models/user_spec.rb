@@ -147,6 +147,14 @@ RSpec.describe User, type: :model do
     end
   end
 
+  describe "validazione attributi:" do
+    let(:user) { build(:user) }
+
+    it "è valido con tutti gli attributi richiesti" do
+      expect(user).to be_valid
+    end
+  end
+
   describe "test iscrizione a più eventi:" do
     let(:user) { create(:user) }
     let(:event1) { create(:event, data_inizio: Date.today + 10) }

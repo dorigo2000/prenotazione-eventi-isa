@@ -7,6 +7,7 @@ class Subscription < ApplicationRecord
   validates :user_id, uniqueness: { scope: :event_id, message: "Sei già iscritto a questo evento!" }
   validate :no_conflicting_events
   validate :max_partecipanti_reached
+  validate :event_not_in_the_past
 
   private
 
@@ -31,6 +32,12 @@ class Subscription < ApplicationRecord
   def max_partecipanti_reached
     if event.attendees.count >= event.max_partecipanti
       errors.add(:base, "Numero massimo di partecipanti raggiunto")
+    end
+  end
+
+  def event_not_in_the_past
+    if event.data_inizio < Date.today
+      errors.add(:base, "Non puoi iscriverti a un evento già passato")
     end
   end
 end

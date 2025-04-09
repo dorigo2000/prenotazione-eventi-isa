@@ -4,7 +4,7 @@ RSpec.describe Notification, type: :model do
   let(:user) { create(:user) }
   let(:event) { create(:event) }
 
-  describe "validazioni attributi" do
+  describe "validazione attributi" do
     it "è valida con tutti gli attributi richiesti" do
       notification = build(:notification, user: user, event: event)
       expect(notification).to be_valid
