@@ -14,7 +14,7 @@ RSpec.feature "UserSubscibe", type: :feature do
     expect(current_path).to eq(events_path)
   end
 
-  scenario "Partecipante si iscrive ad un evento" do
+  scenario "User partecipante si iscrive ad un evento" do
     visit events_path
 
     within("[data-event-id='#{event.id}']") do
@@ -23,7 +23,7 @@ RSpec.feature "UserSubscibe", type: :feature do
     expect(page).to have_content("Iscrizione effettuata con successo!")
   end
 
-  scenario "Partecipante cancella l'iscrizione ad un evento" do
+  scenario "User partecipante cancella l'iscrizione ad un evento" do
     visit events_path
     within("[data-event-id='#{event.id}']") do
       click_button("Iscriviti")
@@ -37,7 +37,7 @@ RSpec.feature "UserSubscibe", type: :feature do
     expect(page).to have_content("La tua iscrizione è stata cancellata con successo!")
   end
 
-  scenario "Partecipante non può iscriversi a due eventi nella stessa data" do
+  scenario "User partecipante non può iscriversi a due eventi nella stessa data" do
     visit events_path 
     click_button "Iscriviti", match: :first
 
