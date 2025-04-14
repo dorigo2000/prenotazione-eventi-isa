@@ -7,7 +7,7 @@
     <h1 class="custom-title ml-4 text-center" style="color: black;">Le tue iscrizioni</h1><hr>
     <% if @subscriptions.any? %>
         <% @subscriptions.each do |subscription| %>
-            <div class="event">
+            <div class="event" data-event-id="<%= subscription.id %>">
                 <h2 class="custom-title" style="text-align: justify;"><%= subscription.nome %></h2>
                 <p class="custom-title" style="color: black; text-align: justify; font-weight: normal;"><strong>Luogo</strong>: <%= "#{subscription.indirizzo}, #{subscription.paese}" %></p>
                 <p class="custom-title" style="color: black; text-align: justify; font-weight: normal;"><strong>Inizio</strong>: <%= "#{subscription.data_inizio.strftime("%d/%m/%Y")}, #{subscription.orario_inizio.strftime("%H:%M")}" %></p>
