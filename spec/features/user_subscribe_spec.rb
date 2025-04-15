@@ -23,6 +23,14 @@ RSpec.feature "UserSubscibe", type: :feature do
     expect(page).to have_content("Iscrizione effettuata con successo!")
   end
 
+  scenario "User partecipante visualizza le proprie iscrizioni" do
+    create(:subscription, user: partecipante, event: event)
+
+    visit subscriptions_path
+
+    expect(page).to have_content("#{event.nome}")
+  end
+
   scenario "User partecipante cancella l'iscrizione ad un evento" do
     visit events_path
     
