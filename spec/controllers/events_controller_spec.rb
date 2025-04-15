@@ -93,6 +93,25 @@ RSpec.describe EventsController, type: :controller do
 
       expect(response).to render_template(:edit)
     end
+
+    it "rimuove l'iscrizione più recente se due eventi finiscono nella stessa data dopo una modifica" do
+      evento1 = create(:event, data_inizio: Date.tomorrow, created_at: 2.days.ago)
+      evento2 = create(:event, data_inizio: Date.today + 2, created_at: 1.day.ago)
+    
+      Subscription.create!(user: partecipante, event: evento1)
+      Subscription.create!(user: partecipante, event: evento2)
+    
+      session[:user_id] = evento1.user.id
+      Current.user = evento1.user
+    
+      patch :update, params: {
+        id: evento1.id,
+        event: { data_inizio: evento2.data_inizio }
+      }
+    
+      expect(partecipante.subscribed_events).to include(evento1)
+      expect(partecipante.subscribed_events).not_to include(evento2)
+    end
   end
 
   describe "DELETE #destroy" do
