@@ -25,6 +25,7 @@ RSpec.feature "UserSubscibe", type: :feature do
 
   scenario "User partecipante cancella l'iscrizione ad un evento" do
     visit events_path
+    
     within("[data-event-id='#{event.id}']") do
       click_button("Iscriviti")
     end

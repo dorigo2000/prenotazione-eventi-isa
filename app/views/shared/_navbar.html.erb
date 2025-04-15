@@ -24,24 +24,24 @@
         </li>
       <% end %>
       <li class="nav-item dropdown list-unstyled ms-auto">
-      <a class="nav-link dropdown-toggle" href="#" id="navbarUserDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-        Notifiche (<%= Current.user.notifications.unread.count %>)
-      </a>
-      <ul class="dropdown-menu dropdown-menu-center mt-2" style="width: 300px; background-color: #faebd7;" aria-labelledby="navbarUserDropdown">
-        <% if Current.user.notifications.unread.any? %>
-          <% Current.user.notifications.each do |notification| %>
-            <% if notification.letto!=true %>
-              <li class="text-center mt-1 mb-1">
-                <strong><%= notification.messaggio %></strong>
-                <%= button_to "Segna come letto", mark_as_read_notification_path(notification), method: :patch, class: "btn btn-sm", style: "background-color: transparent;" %>
-              </li>
+        <a class="nav-link dropdown-toggle" href="#" id="navbarUserDropdown1" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+          Notifiche (<%= Current.user.notifications.unread.count %>)
+        </a>
+        <ul class="dropdown-menu dropdown-menu-center mt-2" style="width: 300px; background-color: #faebd7;" aria-labelledby="navbarUserDropdown">
+          <% if Current.user.notifications.unread.any? %>
+            <% Current.user.notifications.each do |notification| %>
+              <% if notification.letto!=true %>
+                <li class="text-center mt-1 mb-1">
+                  <strong><%= notification.messaggio %></strong>
+                  <%= button_to "Segna come letto", mark_as_read_notification_path(notification), method: :patch, class: "btn btn-sm", style: "background-color: transparent;" %>
+                </li>
+              <% end %>
             <% end %>
+          <% else %>
+            <li class="text-center"><strong>Non ci sono notifiche</strong></li>
           <% end %>
-        <% else %>
-          <li class="text-center"><strong>Non ci sono notifiche</strong></li>
-        <% end %>
-      </ul>
-    </li>
+        </ul>
+      </li>
     </ul>
     <%= form_with url: events_path, method: :get, local: true, class: "d-flex ms-auto me-auto" do %>
       <%= text_field_tag :search_city, params[:search_city], placeholder: "Città", class: "form-control me-2", style: "border-color: grey; background-color: #faebd7" %>
@@ -49,7 +49,7 @@
     <% end %>
     <% if Current.user %>
       <li class="nav-item dropdown list-unstyled ms-auto">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarUserDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarUserDropdown2" role="button" data-bs-toggle="dropdown" aria-expanded="false">
           <strong><%= "#{Current.user.nome} #{Current.user.cognome}" %></strong>
         </a>
         <ul class="dropdown-menu dropdown-menu-end mt-3" aria-labelledby="navbarUserDropdown" style="background-color: #faebd7;">
