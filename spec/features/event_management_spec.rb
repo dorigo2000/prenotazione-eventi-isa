@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.feature "EventManagement", type: :feature do
   let(:organizzatore) { create(:user, tipo: "organizzatore") }
   let(:partecipante) { create(:user) }
-  let!(:event) { create(:event, user: organizzatore)}
+  let!(:event) { create(:event, user: organizzatore, nome: "Evento prova")}
 
   before do
     visit root_path
@@ -45,6 +45,12 @@ RSpec.feature "EventManagement", type: :feature do
     expect(page).to have_content("Nome evento è obbligatorio")
   end
 
+  scenario "User organizzatore visualizza i propri eventi" do
+    visit my_events_events_path
+
+    expect(page).to have_content("Evento prova")
+  end
+
   scenario "User organizzatore modifica evento con successo" do
     visit edit_event_path(event)
 
@@ -69,6 +75,14 @@ RSpec.feature "EventManagement", type: :feature do
     click_button "Elimina", match: :first
 
     expect(page).to have_content("Evento eliminato con successo!")
+  end
+
+  scenario "User organizzatore visualizza l'elenco dei partecipanti ad un proprio evento" do
+    create(:subscription, user: partecipante, event: event)
+
+    visit participants_event_path(event)
+
+    expect(page).to have_content("#{partecipante.nome} #{partecipante.cognome}")
   end
 
   scenario "User organizzatore rimuove un partecipante dall'evento" do
