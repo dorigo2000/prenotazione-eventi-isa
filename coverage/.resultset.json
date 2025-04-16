@@ -1,15 +1,11 @@
 {
   "RSpec": {
     "coverage": {
-      "/mnt/c/Users/marco/OneDrive/Desktop/UNIVERSITA'/MAGISTRALE/2° Anno Accademico/2° semestre/Ingegneria del Software Avanzata/Progetto/prenotazione-eventi/spec/controllers/sessions_controller_spec.rb": {
+      "/mnt/c/Users/marco/OneDrive/Desktop/UNIVERSITA'/MAGISTRALE/2° Anno Accademico/2° semestre/Ingegneria del Software Avanzata/Progetto/prenotazione-eventi/spec/controllers/users_controller_spec.rb": {
         "lines": [
           1,
           null,
           1,
-          4,
-          null,
-          1,
-          1,
           1,
           1,
           1,
@@ -18,23 +14,13 @@
           null,
           1,
           1,
-          1,
+          2,
           null,
           1,
           1,
           null,
           null,
           1,
-          1,
-          null,
-          1,
-          1,
-          1,
-          null,
-          null,
-          1,
-          1,
-          null,
           1,
           1,
           1,
@@ -44,12 +30,8 @@
           1,
           1,
           1,
-          null,
           1,
           null,
-          1,
-          1,
-          1,
           null,
           null,
           null
@@ -383,14 +365,14 @@
         "lines": [
           1,
           1,
-          4,
-          4,
-          4,
-          4,
-          4,
-          4,
-          1,
-          1,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
           null,
           null
         ]
@@ -452,27 +434,17 @@
           null
         ]
       },
-      "/mnt/c/Users/marco/OneDrive/Desktop/UNIVERSITA'/MAGISTRALE/2° Anno Accademico/2° semestre/Ingegneria del Software Avanzata/Progetto/prenotazione-eventi/app/controllers/sessions_controller.rb": {
+      "/mnt/c/Users/marco/OneDrive/Desktop/UNIVERSITA'/MAGISTRALE/2° Anno Accademico/2° semestre/Ingegneria del Software Avanzata/Progetto/prenotazione-eventi/app/controllers/users_controller.rb": {
         "lines": [
           1,
           1,
           null,
-          null,
-          1,
-          3,
-          null,
-          3,
-          1,
           1,
           null,
+          1,
           2,
-          2,
-          null,
-          null,
-          null,
           1,
-          1,
-          1,
+          null,
           null,
           null
         ]
@@ -484,13 +456,13 @@
           1,
           null,
           1,
-          10,
+          4,
           2,
           null,
           null,
           null,
           1,
-          5,
+          2,
           null,
           null
         ]
@@ -521,8 +493,8 @@
           1,
           null,
           1,
-          3,
-          3,
+          1,
+          1,
           0,
           null,
           null,
@@ -531,7 +503,7 @@
           null,
           null,
           1,
-          3,
+          1,
           0,
           null,
           null,
@@ -565,6 +537,6 @@
         ]
       }
     },
-    "timestamp": 1744818987
+    "timestamp": 1744819672
   }
 }
