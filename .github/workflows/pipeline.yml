@@ -27,6 +27,7 @@ jobs:
       - name: Preparazione database
         run: |
           cp config/database.yml.ci config/database.yml
+          chmod +x bin/rails
           bin/rails db:create db:migrate RAILS_ENV=test
 
       - name: Esecuzione test
