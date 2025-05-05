@@ -23,6 +23,11 @@ jobs:
           sudo apt-get update
           sudo apt-get install -y libsqlite3-dev
           bundle install
+    
+      - name: Preparazione database
+        run: |
+          cp config/database.yml.ci config/database.yml
+          bin/rails db:create db:migrate RAILS_ENV=test
 
       - name: Esecuzione test
         run: bundle exec rspec
