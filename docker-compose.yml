@@ -1,0 +1,10 @@
+services:
+  railsapp:
+    image: dorigomarco0/railsapp:latest
+    ports:
+      - "3000:3000"
+    environment:
+      SECRET_KEY_BASE: dummy
+    volumes:
+      - .:/rails
+    restart: unless-stopped
