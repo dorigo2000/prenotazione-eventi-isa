@@ -4,7 +4,7 @@ RSpec.describe SessionsController, type: :controller do
   let(:user) { create(:user, password: "password123", password_confirmation: "password123") }
 
   describe "GET #new" do
-    it "visualizza la shcermata di login" do
+    it "visualizza la schermata di login" do
       get :new
       expect(response).to be_successful
       expect(response).to render_template(:new)

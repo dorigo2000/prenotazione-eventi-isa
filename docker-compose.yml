@@ -1,10 +1,19 @@
+version: '3.3'
+
 services:
-  railsapp:
+  web:
     image: dorigomarco0/railsapp:latest
     ports:
-      - "3000:3000"
+      - "3010:3000"
     environment:
       SECRET_KEY_BASE: dummy
+      RAILS_ENV: production
     volumes:
       - .:/rails
+      - rails_storage:/rails/storage
+    command: >
+      bash -c "rm -f tmp/pids/server.pid && bundle exec rails db:prepare && bundle exec rails s -b 0.0.0.0 -p 3000"
     restart: unless-stopped
+
+volumes:
+  rails_storage:
